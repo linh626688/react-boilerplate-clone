@@ -33,7 +33,7 @@ class Layout extends React.Component {
           {!this.props.fullWidth && (
             <Container>{this.props.children}</Container>
           )}
-          <div className="build-logs">Build: %BUILD_VERSION%</div>
+          {/* <div className="build-logs">Build: %BUILD_VERSION%</div> */}
         </Main>
         <Footer />
       </LayoutWrapper>
