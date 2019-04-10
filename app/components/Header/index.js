@@ -3,11 +3,20 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
-import LogoUrl from 'images/logo.png';
-import { HeaderWrapper, Logo, Nav } from './style';
-import messages from './messages';
-import SignUpBtn from './partials/SignUpBtn';
+import LogoUrl from 'images/logo_MSS_En.png';
+import { withStyles } from '@material-ui/core/styles';
+import { HeaderWrapper, Logo } from './style';
+import LoginBtn from './partials/LoginBtn';
+import AccountBtn from './partials/AccountBtn';
 
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  },
+});
 /* eslint-disable react/prefer-stateless-function */
 class Header extends React.Component {
   constructor(props) {
@@ -76,13 +85,9 @@ class Header extends React.Component {
           </NavLink>
         </Logo>
 
-        <Nav
-          className={`main-nav ${
-            this.state.showMobileMenu ? 'mobile-menu-show' : ''
-          }`}
-        >
-          <SignUpBtn toggleSignupMenu={e => this.handleClickOutside(e)} />
-        </Nav>
+        <LoginBtn isSignUp={false} />
+        <LoginBtn isSignUp />
+        <AccountBtn className="account-btn" />
         <div className="mobile-header-right">
           {/* <AccountBtn className="account-btn" /> */}
           {/* <LanguageSwitcher className="language-switcher" /> */}
@@ -92,4 +97,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default withStyles(styles)(Header);
